@@ -1,5 +1,6 @@
 import streamlit as st
-from datetime import datetime
+from api import query
+
 
 st.set_page_config(page_title="FitMindMove Chat", layout="wide")
 st.title("💬 FitMindMove 챗봇")
@@ -20,8 +21,8 @@ if prompt := st.chat_input("무엇이 고민이신가요?"):
     with st.chat_message("user"):
         st.markdown(prompt)
 
-    # 임시 LLM 응답 (테스트용)
-    response = f"({datetime.now().strftime('%H:%M:%S')}) 제가 이해한 것은: '{prompt}' 입니다."
+    # 사용자 입력 → 백엔드 질의
+    response = query(prompt)
     with st.chat_message("assistant"):
         st.markdown(response)
 
