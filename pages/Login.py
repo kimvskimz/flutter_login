@@ -1,18 +1,22 @@
 import streamlit as st
 
 st.set_page_config(page_title="로그인", layout="centered")
-st.title("🔐 로그인 (임시 세션 기반)")
+st.title("🔐 로그인")
 
-# 세션 초기화
+# --- 세션 안전 초기화 ---
 if "user" not in st.session_state:
-    st.session_state.user = None
+    st.session_state["user"] = None
 
-if st.session_state.user:
-    st.success(f"환영합니다, {st.session_state.user['name']}님!")
+user = st.session_state["user"]
+
+# --- 로그인 상태 확인 ---
+if user:
+    st.success(f"환영합니다, {user['name']}님!")
     if st.button("로그아웃"):
-        st.session_state.user = None
-        st.rerun()
+        st.session_state["user"] = None
+        st.experimental_rerun()
     st.page_link("pages/Chat.py", label="💬 채팅으로 이동")
+
 else:
     with st.form("login_form"):
         name = st.text_input("이름 (테스트용)")
@@ -20,9 +24,12 @@ else:
         submit = st.form_submit_button("로그인")
 
     if submit:
-        st.session_state.user = {"name": name, "email": email}
-        st.success(f"로그인 성공: {name}")
-        st.rerun()
+        if not name:
+            st.warning("이름을 입력하세요.")
+        else:
+            st.session_state["user"] = {"name": name, "email": email}
+            st.success(f"로그인 성공: {name}")
+            st.experimental_rerun()
 
 st.divider()
 st.button("🍎 Apple 로그인 (준비 중)", disabled=True)
