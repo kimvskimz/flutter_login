@@ -1,11 +1,16 @@
-
 import streamlit as st
-st.write("🔥 secrets keys:", list(st.secrets.keys()))
+
+
 import requests
 import json
 
 
+# 반드시 첫 번째 Streamlit 명령
 st.set_page_config(page_title="로그인", layout="centered")
+
+# 이후 출력들은 여기에
+st.write("🔥 secrets keys:", list(st.secrets.keys()))
+
 st.title("🔐 Google 로그인 (Firebase REST API)")
 
 API_KEY = st.secrets["FIREBASE"]["api_key"]
@@ -31,7 +36,7 @@ if st.session_state["user"]:
     if st.button("로그아웃"):
         st.session_state["user"] = None
         st.rerun()
-    st.page_link("pages/02_Chat.py", label="💬 채팅으로 이동")
+    st.page_link("pages/Chat.py", label="💬 채팅으로 이동")
 
 else:
     st.info("아래 버튼을 눌러 Google 계정으로 로그인하세요.")
