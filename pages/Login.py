@@ -9,7 +9,7 @@ params = st.experimental_get_query_params()
 if "code" in params:
     st.success(f"Google 인증 코드 수신: {params['code'][0]}")
     st.stop()
-
+    
 # ------------------- Firebase API -------------------
 st.title("🔐 Google 로그인 (Firebase REST API)")
 
