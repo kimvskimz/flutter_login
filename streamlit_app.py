@@ -1,4 +1,6 @@
 import streamlit as st
+st.set_page_config(page_title="FitMindMove", page_icon="💬", layout="wide")
+
 
 st.set_page_config(page_title="FitMindMove 홈", layout="centered")
 
