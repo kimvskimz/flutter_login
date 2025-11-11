@@ -33,6 +33,7 @@ def google_sign_in():
 
 if st.session_state["user"]:
     st.success(f"환영합니다, {st.session_state['user']['displayName']}님!")
+    
     if st.button("로그아웃"):
         st.session_state["user"] = None
         st.rerun()
@@ -40,6 +41,7 @@ if st.session_state["user"]:
 
 else:
     st.info("아래 버튼을 눌러 Google 계정으로 로그인하세요.")
+    
     if st.button("🔑 Google 로그인"):
         st.write("⚙️ Firebase Google 로그인 흐름은 브라우저 리디렉션이 필요합니다.")
         st.markdown("[Google 로그인 바로가기](https://accounts.google.com/o/oauth2/v2/auth)")
@@ -51,7 +53,7 @@ else:
         if st.button("🔑 Google 로그인"):
     st.write("⚙️ Firebase Google 로그인 페이지로 이동합니다.")
 
-    GOOGLE_CLIENT_ID = "project-801950083850"  # Firebase 콘솔에서 복사
+    GOOGLE_CLIENT_ID = "801950083850-nd7a45hvtcokrrnc435v8g8g9mbnih3f.apps.googleusercontent.com"  # Firebase 콘솔에서 복사
     REDIRECT_URI = "https://fitmindmove.streamlit.app/pages/Login"
     SCOPE = "email profile openid"
 
