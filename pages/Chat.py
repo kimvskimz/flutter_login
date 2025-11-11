@@ -7,7 +7,7 @@ st.title("💬 FitMindMove 챗봇")
 
 if not st.user:
     st.warning("로그인 후 이용할 수 있습니다.")
-    st.page_link("pages/01_Login.py", label="로그인으로 이동")
+    st.page_link("pages/Login.py", label="로그인으로 이동")
     st.stop()
 
 if "messages" not in st.session_state:
