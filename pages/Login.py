@@ -45,7 +45,7 @@ if st.button("🔑 Google 로그인", key="google_login_btn"):
         f"&access_type=online"
     )
 
-    # ✅ 즉시 브라우저 리디렉션
+    # ✅ 즉시 리디렉션
     st.write("🔁 Google 로그인 페이지로 이동 중입니다...")
     st.markdown(
         f"""
@@ -53,6 +53,7 @@ if st.button("🔑 Google 로그인", key="google_login_btn"):
         """,
         unsafe_allow_html=True,
     )
+
 
 
     # ------------------- 이메일 로그인 (테스트용) -------------------
