@@ -50,7 +50,9 @@ else:
     with st.expander("이메일 로그인 (테스트용)"):
         email = st.text_input("이메일")
         password = st.text_input("비밀번호", type="password")
+        
         if st.button("🔑 Google 로그인"):
+            
     st.write("⚙️ Firebase Google 로그인 페이지로 이동합니다.")
 
     GOOGLE_CLIENT_ID = "801950083850-nd7a45hvtcokrrnc435v8g8g9mbnih3f.apps.googleusercontent.com"  # Firebase 콘솔에서 복사
