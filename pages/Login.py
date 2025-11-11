@@ -9,7 +9,7 @@ if not st.user:
     st.login("oidc", provider="google")  # 실제 로그인 작동
 else:
     st.success(f"환영합니다, {st.user.name}님!")
-    st.page_link("pages/02_Chat.py", label="💬 채팅으로 이동")
+    st.page_link("pages/Chat.py", label="💬 채팅으로 이동")
 
 st.divider()
 st.button("🍎 Apple 로그인 (준비 중)", disabled=True)
