@@ -14,7 +14,7 @@ if user:
     st.success(f"환영합니다, {user['name']}님!")
     if st.button("로그아웃"):
         st.session_state["user"] = None
-        st.experimental_rerun()
+        st.rerun()
     st.page_link("pages/Chat.py", label="💬 채팅으로 이동")
 
 else:
@@ -29,7 +29,7 @@ else:
         else:
             st.session_state["user"] = {"name": name, "email": email}
             st.success(f"로그인 성공: {name}")
-            st.experimental_rerun()
+            st.rerun()
 
 st.divider()
 st.button("🍎 Apple 로그인 (준비 중)", disabled=True)
