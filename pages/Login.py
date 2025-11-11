@@ -31,24 +31,29 @@ if st.session_state["user"]:
 else:
     st.info("아래 버튼을 눌러 Google 계정으로 로그인하세요.")
 
-    if st.button("🔑 Google 로그인", key="google_login_btn"):
-        st.write("⚙️ Firebase Google 로그인 페이지로 이동합니다.")
+   if st.button("🔑 Google 로그인", key="google_login_btn"):
+    GOOGLE_CLIENT_ID = "801950083850-nd7a45hvtcokrrnc435v8g8g9mbnih3f.apps.googleusercontent.com"
+    REDIRECT_URI = "https://fitmindmove.streamlit.app/pages/Login"
+    SCOPE = "email profile openid"
 
-        # ⚙️ Firebase 콘솔 → Authentication → Google → 웹 클라이언트 ID 복사
-        GOOGLE_CLIENT_ID = "801950083850-nd7a45hvtcokrrnc435v8g8g9mbnih3f.apps.googleusercontent.com"
-        REDIRECT_URI = "https://fitmindmove.streamlit.app/pages/Login"
-        SCOPE = "email profile openid"
+    auth_url = (
+        "https://accounts.google.com/o/oauth2/v2/auth"
+        f"?client_id={GOOGLE_CLIENT_ID}"
+        f"&redirect_uri={REDIRECT_URI}"
+        f"&response_type=code"
+        f"&scope={SCOPE}"
+        f"&access_type=online"
+    )
 
-        auth_url = (
-            "https://accounts.google.com/o/oauth2/v2/auth"
-            f"?client_id={GOOGLE_CLIENT_ID}"
-            f"&redirect_uri={REDIRECT_URI}"
-            f"&response_type=code"
-            f"&scope={SCOPE}"
-            f"&access_type=online"
-        )
+    # ✅ 즉시 브라우저 리디렉션
+    st.write("🔁 Google 로그인 페이지로 이동 중입니다...")
+    st.markdown(
+        f"""
+        <meta http-equiv="refresh" content="0; url={auth_url}">
+        """,
+        unsafe_allow_html=True,
+    )
 
-        st.markdown(f"[👉 Google 로그인으로 이동하기]({auth_url})")
 
     # ------------------- 이메일 로그인 (테스트용) -------------------
     with st.expander("📧 이메일 로그인 (테스트용)"):
