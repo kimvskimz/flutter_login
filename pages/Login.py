@@ -48,20 +48,20 @@ else:
     with st.expander("이메일 로그인 (테스트용)"):
         email = st.text_input("이메일")
         password = st.text_input("비밀번호", type="password")
-        if st.button("로그인 시도"):
-            payload = {
-                "email": email,
-                "password": password,
-                "returnSecureToken": True
-            }
-            r = requests.post(
-                f"https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key={API_KEY}",
-                json=payload
-            )
-            data = r.json()
-            if "idToken" in data:
-                st.session_state["user"] = {"email": data["email"], "idToken": data["idToken"]}
-                st.success(f"로그인 성공: {data['email']}")
-                st.rerun()
-            else:
-                st.error(f"로그인 실패: {data.get('error', {}).get('message', '알 수 없음')}")
+        if st.button("🔑 Google 로그인"):
+    st.write("⚙️ Firebase Google 로그인 페이지로 이동합니다.")
+
+    GOOGLE_CLIENT_ID = "project-801950083850"  # Firebase 콘솔에서 복사
+    REDIRECT_URI = "https://fitmindmove.streamlit.app/pages/Login"
+    SCOPE = "email profile openid"
+
+    auth_url = (
+        "https://accounts.google.com/o/oauth2/v2/auth"
+        f"?client_id={GOOGLE_CLIENT_ID}"
+        f"&redirect_uri={REDIRECT_URI}"
+        f"&response_type=code"
+        f"&scope={SCOPE}"
+        f"&access_type=online"
+    )
+
+    st.markdown(f"[👉 Google 로그인으로 이동하기]({auth_url})")
