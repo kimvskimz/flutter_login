@@ -33,7 +33,7 @@ else:
 
 if st.button("🔑 Google 로그인", key="google_login_btn"):
     GOOGLE_CLIENT_ID = "154991033089-iiim41uef7v9r01dg0g0767reom8v2cn.apps.googleusercontent.com"
-    REDIRECT_URI = "https://fitmindmove.streamlit.app/pages/Login"
+    REDIRECT_URI = "https://fitmindmove.streamlit.app/"
     SCOPE = "email profile openid"
 
     auth_url = (
