@@ -32,7 +32,7 @@ else:
     st.info("아래 버튼을 눌러 Google 계정으로 로그인하세요.")
 
 if st.button("🔑 Google 로그인", key="google_login_btn"):
-    GOOGLE_CLIENT_ID = "801950083850-nd7a45hvtcokrrnc435v8g8g9mbnih3f.apps.googleusercontent.com"
+    GOOGLE_CLIENT_ID = "154991033089-iiim41uef7v9r01dg0g0767reom8v2cn.apps.googleusercontent.com"
     REDIRECT_URI = "https://fitmindmove.streamlit.app/pages/Login"
     SCOPE = "email profile openid"
 
