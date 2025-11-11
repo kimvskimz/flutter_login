@@ -2,13 +2,13 @@ import streamlit as st
 import requests
 import json
 
+# ------------------- 필수 설정 -------------------
+st.set_page_config(page_title="로그인", layout="centered")
+
 params = st.experimental_get_query_params()
 if "code" in params:
     st.success(f"Google 인증 코드 수신: {params['code'][0]}")
     st.stop()
-
-# ------------------- 필수 설정 -------------------
-st.set_page_config(page_title="로그인", layout="centered")
 
 # ------------------- Firebase API -------------------
 st.title("🔐 Google 로그인 (Firebase REST API)")
