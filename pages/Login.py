@@ -1,6 +1,9 @@
+
 import streamlit as st
+st.write("🔥 secrets keys:", list(st.secrets.keys()))
 import requests
 import json
+
 
 st.set_page_config(page_title="로그인", layout="centered")
 st.title("🔐 Google 로그인 (Firebase REST API)")
